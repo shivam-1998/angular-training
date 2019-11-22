@@ -1,0 +1,11 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<app-add-recipe-component (valueChange)='displayRecipe($event)'></app-add-recipe-component>
+
+<app-recipe-list-cell-component [recipe]="data"></app-recipe-list-cell-component>
+
+<router-outlet></router-outlet>

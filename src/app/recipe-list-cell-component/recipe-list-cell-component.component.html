@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <section id="gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4" *ngFor="let x of recipes; let i = index">
+                    <div class="card" appHighlight>
+                        <img src={{x.imageUrl}} alt="" class="card-img-top">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <h5 class="card-title">{{x.name}}</h5><div [ngClass]="{'veg': x.type == 'Veg', 'nonVeg': x.type == 'Non-Veg'}" class="square"></div>
+                            </div>
+                            <p class="card-text">
+                                {{x.description}}
+                            </p>
+                            <p class="card-text"><span style="font-weight: bold;">Chef: </span>{{x.chef}}</p>
+                            <button type="button" class="btn btn-outline-danger"
+                                (click)="removeRecipe(i)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
