@@ -7,6 +7,7 @@ import { log } from 'util';
   styleUrls: ['./recipe-list-cell-component.component.css']
 })
 export class RecipeListCellComponentComponent implements OnInit, OnChanges {
+  noRecord = false;
   @Input() recipe;
   recipes = [
     {
@@ -33,6 +34,11 @@ export class RecipeListCellComponentComponent implements OnInit, OnChanges {
   ];
   constructor() { }
   ngOnInit() {
+    if (this.recipes.length===0 || this.recipes === null) {
+      this.noRecord = true;
+    }
+    console.log(this.noRecord);
+    
   }
   ngOnChanges() {
     if (this.recipe) {
@@ -40,9 +46,13 @@ export class RecipeListCellComponentComponent implements OnInit, OnChanges {
       alert('New Recipe Added');
     }
   }
-  removeRecipe(getIndex){
-   if(confirm('Are sure you want to Remove it?')){
-     this.recipes.splice(getIndex,1);
-   }
+  removeRecipe(getIndex) {
+    if (confirm('Are sure you want to Remove it?')) {
+      this.recipes.splice(getIndex, 1);
+      if (this.recipes.length===0 || this.recipes === null) {
+        this.noRecord = true;
+      }
+    }
+    console.log(this.noRecord);
   }
 }
