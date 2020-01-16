@@ -1,0 +1,12 @@
+<div class="container mt-3">
+    <a [routerLink]="['/add-new']"><button class="btn btn-primary mr-1" (click)="onAddNewClicked()">Add Recipe</button></a>
+      <div class="row hidden-md-up" *ngIf="recipes.length; else norec">
+        <div class="col-md-4" *ngFor="let recipe of recipes">
+          <app-recipe-list-cell-component [recipe]="recipe"></app-recipe-list-cell-component>
+        </div>
+      </div>
+  </div>
+  
+  <ng-template #norec>
+    <p>No recipes available.</p>
+  </ng-template>
