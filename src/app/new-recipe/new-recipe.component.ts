@@ -27,7 +27,7 @@ export class NewRecipeComponent implements OnInit {
   }
 
   onHomeClicked() {
-    this.router.navigate(['/recipes']);
+    this.router.navigate(['/']);
   }
 
   onSubmit() {

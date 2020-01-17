@@ -9,6 +9,8 @@ import { ReceipeManagerService } from 'src/service/reciepe.service';
 import { LoggingService } from 'src/service/logging.service';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { RecipesComponent } from './recipes/recipes.component';
+import { AuthGuard } from 'src/service/auth-guard.service';
+import { AuthService } from 'src/service/auth.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { RecipesComponent } from './recipes/recipes.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [LoggingService, ReceipeManagerService],
+  providers: [LoggingService, ReceipeManagerService, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

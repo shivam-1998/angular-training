@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+.nav-bar {
+    float: right;
+}
+
+.inline-block {
+    display: inline;
+}
+
+.close-icon{
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 26px;
+    z-index: 1000;
+}
