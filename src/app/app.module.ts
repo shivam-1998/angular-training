@@ -21,7 +21,7 @@ import { RecipesComponent } from './recipes/recipes.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [LoggingService, ReceipeManagerService],
   bootstrap: [AppComponent]

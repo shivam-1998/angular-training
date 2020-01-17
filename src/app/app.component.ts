@@ -13,5 +13,9 @@ export class AppComponent {
     this.data = event
     // console.log(this.data);
   }
-
+  navbarOpen = false;
+ 
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
 }
