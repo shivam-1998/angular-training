@@ -5,16 +5,26 @@
             <div class="card-body">
                 <div class="d-flex">
                     <h5 class="card-title">{{recipe.name}}</h5>
-                    <div [ngClass]="{'veg': recipe.type == 'Veg', 'nonVeg': recipe.type == 'Non-Veg'}"
-                        class="square">
-                    </div>
+                        <div [ngClass]="{'veg': recipe.type === 'Veg', 'nonVeg': recipe.type === 'Non-Veg'}"
+                            class="square">
+                        </div>
+                        <div class="like">
+                            <div *ngIf="recipe.like > 0; else elseBlock">
+                                <img class="heartLike" src="https://img.icons8.com/plasticine/100/000000/like.png" (click)="onLikeClicked(recipe.index, recipe.like)">
+                            </div>
+                            <ng-template #elseBlock>
+                                <img class="heartLike" src="https://img.icons8.com/plasticine/100/000000/like--v2.png" (click)="onLikeClicked(recipe.index, recipe.like)">
+                            </ng-template>
+                        </div>
                 </div>
                 <p class="card-text">
                     {{recipe.description}}
                 </p>
                 <p class="card-text"><span style="font-weight: bold;">Chef: </span>{{recipe.chef}}</p>
                 <button type="button" class="btn btn-outline-danger"
-                    (click)="removeRecipe(i)">Remove</button>
+                    (click)="removeRecipe(recipe.index)">Remove
+                </button>
+                
             </div>
         </div>
     <!-- </div> -->

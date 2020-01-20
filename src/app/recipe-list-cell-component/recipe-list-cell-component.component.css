@@ -12,3 +12,12 @@
 .nonVeg {
     background-color: red;
 }
+
+.like{
+    margin-left: 46px;
+}
+
+.heartLike {
+    height: 30px;
+    width: 30px;
+}

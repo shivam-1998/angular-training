@@ -9,6 +9,7 @@ import { ReceipeManagerService } from 'src/service/reciepe.service';
   styleUrls: ['./new-recipe.component.css']
 })
 export class NewRecipeComponent implements OnInit {
+  recipesCount = 0;
   recipeForm: FormGroup;
   chef;
   name;
@@ -17,6 +18,7 @@ export class NewRecipeComponent implements OnInit {
   constructor(private router: Router, private recipeManagerService: ReceipeManagerService) { }
 
   ngOnInit() {
+    this.recipesCount = this.recipeManagerService.recipes.length;
     this.recipeForm = new FormGroup({
       name : new FormControl(''),
        imageUrl: new FormControl(''),
@@ -32,6 +34,7 @@ export class NewRecipeComponent implements OnInit {
 
   onSubmit() {
     this.recipeManagerService.addRecipe({
+      index: this.recipesCount,
       name: this.recipeForm.value.name,
       chef: this.recipeForm.value.chef,
       imageUrl: this.recipeForm.value.imageUrl,
