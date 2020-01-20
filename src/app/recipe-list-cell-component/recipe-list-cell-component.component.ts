@@ -15,20 +15,26 @@ export class RecipeListCellComponentComponent implements OnInit {
   constructor(private recipeSercvice: ReceipeManagerService) {
   }
   ngOnInit() {
-    console.log(this.recipe);
-    
     this.recipes = this.recipeSercvice.recipes;
     if (this.recipes.length === 0 || this.recipes === null) {
       this.noRecord = true;
     }
   }
 
-  removeRecipe(getIndex) {
+removeRecipe(getIndex: number) {
     if (confirm('Are sure you want to Remove it?')) {
       this.recipes.splice(getIndex, 1);
       if (this.recipes.length === 0 || this.recipes === null) {
         this.noRecord = true;
       }
+    }
+  }
+
+  onLikeClicked(index: number, likeCount: number) {
+    if (likeCount === 0) {
+      this.recipeSercvice.likeRecipe(index);
+    } else {
+      this.recipeSercvice.disLikeRecipe(index);
     }
   }
 }
