@@ -15,6 +15,8 @@ export class RecipeListCellComponentComponent implements OnInit {
   constructor(private recipeSercvice: ReceipeManagerService) {
   }
   ngOnInit() {
+    console.log(this.recipe);
+    
     this.recipes = this.recipeSercvice.recipes;
     if (this.recipes.length === 0 || this.recipes === null) {
       this.noRecord = true;
