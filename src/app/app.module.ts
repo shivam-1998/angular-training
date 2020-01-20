@@ -11,6 +11,8 @@ import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { AuthGuard } from 'src/service/auth-guard.service';
 import { AuthService } from 'src/service/auth.service';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AuthService } from 'src/service/auth.service';
     RecipeListCellComponentComponent,
     HighlightDirective,
     NewRecipeComponent,
-    RecipesComponent
+    RecipesComponent,
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
