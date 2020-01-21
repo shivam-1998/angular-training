@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ReceipeManagerService } from 'src/service/reciepe.service';
 import { element } from 'protractor';
 
@@ -7,8 +7,14 @@ import { element } from 'protractor';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnChanges {
+  ngOnChanges() {
+    if (this.recepie.recipes.length === 0) {
+      this.Nodata = true;
+    }
+  }
   likedRecepie = [];
+  Nodata = false;
   constructor(private recepie: ReceipeManagerService) { }
 
   ngOnInit() {
@@ -17,8 +23,6 @@ export class HomeComponent implements OnInit {
         this.likedRecepie.push(element);
       }
     });
-    console.log(this.likedRecepie);
-
   }
 
 }

@@ -13,8 +13,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   constructor(private router: Router, private auth: AuthService) {
     this.loginForm = new FormGroup({
-      username: new FormControl(null, [Validators.required, Validators.minLength(4)]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(5)])
+      username: new FormControl('Shivam', [Validators.required, Validators.minLength(4)]),
+      password: new FormControl('test', [Validators.required, Validators.minLength(4)])
     });
   }
 
