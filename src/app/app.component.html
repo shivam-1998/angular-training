@@ -8,43 +8,32 @@
 </head>
 <body>
   <nav class="navbar navbar-dark bg-dark navbar-expand-md py-4 fixed-top scrolled">
-    <a class="navbar-brand" routerLink="/">RECIPE MANAGEMENT</a>
+    <a class="navbar-brand" routerLink="/home">RECIPE MANAGEMENT</a>
     <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse"
       data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
       aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarTogglerDemo01" [ngClass]="{ 'show': navbarOpen }">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/home">HOME<i class="fa fa-home"></i></a>
+          <a class="nav-link" routerLink="/home">HOME <i class="fa fa-home"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/add-new">ADD NEW<i class="fa fa-plus" aria-hidden="true"></i></a>
+          <a class="nav-link" routerLink="/add-new">ADD NEW <i class="fa fa-plus" aria-hidden="true"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/recipes">ALL RECIPE<i class="fa fa-plus" aria-hidden="true"></i></a>
+          <a class="nav-link" routerLink="/recipes">ALL RECIPE <i class="fa fa-list" aria-hidden="true"></i></a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/home" (click)="logout()">Log Out<i class="fa fa-home"></i></a>
+        <li class="nav-item" *ngIf="auth.isAuthenticated()">
+          <a class="nav-link" routerLink="/home" (click)="logout()">Log Out <i class="fa fa-sign-out" aria-hidden="true"></i></a>
         </li>
       </ul>
     </div>
   </nav>
-
-  <!-- <div class="nav-bar">
-    <button class="btn btn-primary" routerLink="/add-new">Add Recipe</button> &nbsp;
-    <button class="btn btn-primary" routerLink="/recipes">Recipes</button>
-  </div> -->
 </body>
 </html>
 
-<!--The content below is only a placeholder and can be replaced.-->
-<!-- <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div> -->
 <router-outlet></router-outlet>

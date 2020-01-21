@@ -1,32 +1,30 @@
 <div class="container mt-5 pt-5">
-    <!-- <div class="row"> -->
-        <div class="card" appHighlight *ngFor="let recipe of likedRecepie">
-            <img src={{recipe.imageUrl}} alt="" class="card-img-top">
+    <div class="row">
+        <div class="card col-md-4" appHighlight *ngFor="let recipe of likedRecepie">
+            <img src={{recipe.imageUrl}} alt="" class="card-img-top pt-2 img-fluid">
             <div class="card-body">
                 <div class="d-flex">
                     <h5 class="card-title">{{recipe.name}}</h5>
-                        <div [ngClass]="{'veg': recipe.type === 'Veg', 'nonVeg': recipe.type === 'Non-Veg'}"
-                            class="square">
+                    <div class="like float-left pl-5">
+                        <div *ngIf="recipe.like > 0; else elseBlock">
+                            <i class="fa fa-heart text-danger" aria-hidden="true"></i>
                         </div>
-                        <div class="like">
-                            <div *ngIf="recipe.like > 0; else elseBlock">
-                                <img class="heartLike" src="https://img.icons8.com/plasticine/100/000000/like.png" (click)="onLikeClicked(recipe.index, recipe.like)">
-                            </div>
-                            <ng-template #elseBlock>
-                                <img class="heartLike" src="https://img.icons8.com/plasticine/100/000000/like--v2.png" (click)="onLikeClicked(recipe.index, recipe.like)">
-                            </ng-template>
-                        </div>
+                    </div>
                 </div>
                 <p class="card-text">
                     {{recipe.description}}
                 </p>
+                <div class="d-flex">
+                    <h5>Type: </h5>
+                    <div [ngClass]="{'veg': recipe.type === 'Veg', 'nonVeg': recipe.type === 'Non-Veg'}"
+                        class="square pt-2 mt-1">
+                    </div>
+                </div>
                 <p class="card-text"><span style="font-weight: bold;">Chef: </span>{{recipe.chef}}</p>
-                <!-- <button type="button" class="btn btn-outline-danger"
-                    (click)="removeRecipe(recipe.index)">Remove
-                </button> -->
-                
             </div>
         </div>
-    <!-- </div> -->
+        <div class="justify-content-center mt-5 pt-5 mb-5 pb-5 ml-5 pl-5" *ngIf="likedRecepie.length === 0">
+            <img src="https://cdn.dribbble.com/users/1554526/screenshots/3399669/no_results_found.png" alt="">
+        </div>
+    </div>
 </div>
-
