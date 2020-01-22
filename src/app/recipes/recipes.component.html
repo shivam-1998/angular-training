@@ -19,7 +19,7 @@
         <!-- <app-recipe-list-cell-component [recipe]="recipe"></app-recipe-list-cell-component> -->
         <div class="pt-3 mt-3 col-4">
           <!-- <div class="row"> -->
-          <div class="card" appHighlight (click)="receipeList(recipe)">
+          <div class="card" appHighlight (click)="receipeList(i)">
             <img src={{recipe.imageUrl}} alt="" class="card-img-top img-fluid">
             <div class="card-body">
               <!-- <div class="d-flex"> -->
@@ -54,35 +54,36 @@
     </div>
     
     <div class="col-5">
-      <div class="mt-3 pt-3" *ngFor="let recipe of recipeList; let i=index">
+      <!-- <div class="mt-3 pt-3" *ngFor="let recipe of recipeList; let i=index"> -->
+          <div class="mt-3 pt-3">
         <div class="card" appHighlight>
-          <img src={{recipe.imageUrl}} alt="" class="card-img-top img-fluid">
+          <img src={{currentRecipe.imageUrl}} alt="" class="card-img-top img-fluid">
           <div class="card-body">
             <div class="d-flex">
-              <h5 class="card-title">{{recipe.name}}</h5>
+              <h5 class="card-title">{{currentRecipe.name}}</h5>
 
               <div class="like float-left pl-5">
-                <div *ngIf="recipe.like > 0; else elseBlock">
+                <div *ngIf="currentRecipe.like > 0; else elseBlock">
                   <i class="fa fa-heart text-danger fa-2x pl-5" aria-hidden="true"
-                    (click)="onLikeClicked(recipe.index, recipe.like)"></i>
+                    (click)="onLikeClicked(currentRecipe.index, currentRecipe.like)"></i>
                 </div>
                 <ng-template #elseBlock>
                   <i class="fa fa-heart-o fa-2x pl-5" aria-hidden="true"
-                    (click)="onLikeClicked(recipe.index, recipe.like)"></i>
+                    (click)="onLikeClicked(currentRecipe.index, currentRecipe.like)"></i>
                 </ng-template>
               </div>
             </div>
             <p class="card-text">
-              {{recipe.description}}
+              {{currentRecipe.description}}
             </p>
             <div class="d-flex">
               <h5>Type: </h5>
-              <div [ngClass]="{'veg': recipe.type === 'Veg', 'nonVeg': recipe.type === 'Non-Veg'}"
+              <div [ngClass]="{'veg': currentRecipe.type === 'Veg', 'nonVeg': currentRecipe.type === 'Non-Veg'}"
                 class="square pt-2 mt-1">
               </div>
             </div>
-            <p class="card-text"><span style="font-weight: bold;">Chef: </span>{{recipe.chef}}</p>
-            <button type="button" class="btn btn-outline-danger" (click)="removeRecipe(recipe.index)">Remove
+            <p class="card-text"><span style="font-weight: bold;">Chef: </span>{{currentRecipe.chef}}</p>
+            <button type="button" class="btn btn-outline-danger" (click)="removeRecipe(currentRecipe.index)">Remove
             </button>
           </div>
         </div>

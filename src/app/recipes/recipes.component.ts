@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReceipeManagerService } from 'src/service/reciepe.service';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipes',
@@ -13,8 +14,9 @@ export class RecipesComponent implements OnInit {
   noRecord = false;
   public search = new FormControl('');
   public totalItems;
+  public currentRecipe;
 
-  constructor(private recipeManagerService: ReceipeManagerService, private recipeSercvice: ReceipeManagerService) {
+  constructor(private recipeManagerService: ReceipeManagerService, private recipeSercvice: ReceipeManagerService, private router: Router) {
 
   }
 
@@ -24,6 +26,7 @@ export class RecipesComponent implements OnInit {
     if (this.recipes.length === 0 || this.recipes === null) {
       this.noRecord = true;
     }
+    this.currentRecipe = this.recipes[0];
   }
 
   onValueChange() {
@@ -48,8 +51,16 @@ export class RecipesComponent implements OnInit {
     }
   }
 
-  receipeList(data) {
-    this.recipeList.push(data);
+  receipeList(index) {
+    // this.recipeList.pop();
+    // this.recipes.forEach(e=>{
+    //   if(e.index === index){
+    //     this.recipeList.push(e);
+    //     this.router.navigate(['/recipes'], { queryParams: { id: index } });
+    //   }
+    // });
+        this.router.navigate(['/recipes'], { queryParams: { id: index } });
+    this.currentRecipe = this.recipes[index];
   }
 
   onLikeClicked(index: number, likeCount: number) {
