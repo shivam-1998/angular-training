@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReceipeManagerService } from 'src/service/reciepe.service';
 import { FormControl } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recipes',
@@ -9,12 +10,13 @@ import { FormControl } from '@angular/forms';
 })
 export class RecipesComponent implements OnInit {
   recipes = [];
+  recipe = {};
   recipeList = [];
   noRecord = false;
   public search = new FormControl('');
   public totalItems;
 
-  constructor(private recipeManagerService: ReceipeManagerService, private recipeSercvice: ReceipeManagerService) {
+  constructor(private recipeManagerService: ReceipeManagerService, private recipeSercvice: ReceipeManagerService, private route: Router , private routes: ActivatedRoute) {
 
   }
 
@@ -48,15 +50,7 @@ export class RecipesComponent implements OnInit {
     }
   }
 
-  receipeList(data) {
-    this.recipeList.push(data);
-  }
-
-  onLikeClicked(index: number, likeCount: number) {
-    if (likeCount === 0) {
-      this.recipeSercvice.likeRecipe(index);
-    } else {
-      this.recipeSercvice.disLikeRecipe(index);
-    }
+  recipeDetail(reciepe) {
+    this.route.navigate(['recipes', reciepe.index]);
   }
 }

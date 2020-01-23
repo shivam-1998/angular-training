@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { log } from 'util';
 import { ReceipeManagerService } from 'src/service/reciepe.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list-cell-component',
@@ -9,17 +10,16 @@ import { ReceipeManagerService } from 'src/service/reciepe.service';
 })
 export class RecipeListCellComponentComponent implements OnInit {
   noRecord = false;
-  @Input() recipe;
+  recipe;
   recipes;
 
-  constructor(private recipeSercvice: ReceipeManagerService) {
+  constructor(private recipeSercvice: ReceipeManagerService, private routes: ActivatedRoute) {
   }
   ngOnInit() {
-    console.log(this.recipe);
     this.recipes = this.recipeSercvice.recipes;
-    if (this.recipes.length === 0 || this.recipes === null) {
-      this.noRecord = true;
-    }
+    this.routes.params.subscribe(async (params) => {
+      this.recipe = await this.recipes.find(r => r.index === +params.id);
+    });
   }
 
 removeRecipe(getIndex: number) {
