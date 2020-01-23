@@ -6,7 +6,6 @@ import { RecipeListCellComponentComponent } from './recipe-list-cell-component/r
 import { AuthGuard } from 'src/service/auth-guard.service';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { RecipeResolverService } from '../service/recipe-resolver.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
