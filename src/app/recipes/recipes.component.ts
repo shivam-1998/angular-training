@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ReceipeManagerService } from 'src/service/reciepe.service';
 import { FormControl } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
 
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
@@ -15,6 +15,7 @@ export class RecipesComponent implements OnInit {
   noRecord = false;
   public search = new FormControl('');
   public totalItems;
+  public currentRecipe;
 
   constructor(private recipeManagerService: ReceipeManagerService, private recipeSercvice: ReceipeManagerService, private route: Router , private routes: ActivatedRoute) {
 
@@ -26,6 +27,7 @@ export class RecipesComponent implements OnInit {
     if (this.recipes.length === 0 || this.recipes === null) {
       this.noRecord = true;
     }
+    this.currentRecipe = this.recipes[0];
   }
 
   onValueChange() {
